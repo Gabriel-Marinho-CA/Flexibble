@@ -17,12 +17,12 @@ export const authOptions: NextAuthOptions = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         }),
     ],
-    jwt: {
+    jwt: { 
         encode: ({ secret, token }) => {
             const encodedToken = jsonwebtoken.sign({
                 ...token,
                 iss: 'grafbase',
-                exp: Math.floor(Date.now() / 1000) + 60 * 60
+                // exp: Math.floor(Date.now() / 1000) + 60 * 60*999999999999
             }, secret)
 
             return encodedToken;
